@@ -12,5 +12,5 @@ scriptings:
       timeout: 60
 mitm:
   hostnames:
-    - *.kuwo.cn
-    - *.lrts.me
+    - '*.kuwo.cn'
+    - '*.lrts.me'
