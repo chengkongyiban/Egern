@@ -1,0 +1,19 @@
+#!name=YouTube去广告
+#!author=Maasea
+url_rewrites:
+  - match: ^https?:\/\/[\w-]+\.googlevideo\.com\/initplayback.+&oad
+    location: http://reject/
+    status_code: 200
+scriptings:
+  - http_response:
+      name: youtube.js
+      script_url: >-
+        https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/youtube.js
+      match: >-
+        ^https:\/\/youtubei\.googleapis\.com\/youtubei\/v1\/(browse|next|player|search|reel\/reel_watch_sequence|guide)
+      body_required: true
+      timeout: 60
+mitm:
+  hostnames:
+    - '*.googlevideo.com'
+    - 'youtubei.googleapis.com'
