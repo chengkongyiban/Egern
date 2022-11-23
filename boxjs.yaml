@@ -1,3 +1,5 @@
+#name=boxjs
+
 scriptings:
   - http_request:
       name: chavy.boxjs.js
