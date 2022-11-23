@@ -1,3 +1,6 @@
+#!name=酷我vip
+#!desc=酷我vip
+#!author=nameking77
 scriptings:
   - http_response:
       name: kw.js
