@@ -1,4 +1,4 @@
-  scriptings:
+scriptings:
   - http_response:
       name: kw.js
       script_url: >-
