@@ -1,3 +1,6 @@
+#!name=趣听去弹窗
+#!desc=趣听去弹窗
+#!author=ddgksf2013
 scriptings:
   - http_response:
       name: qtmusic.js
