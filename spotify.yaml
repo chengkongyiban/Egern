@@ -1,4 +1,6 @@
 #!name=spotify
+#!sdesc=potify解锁
+#!author=app2smile
 scriptings:
   - http_response:
       name: spotify-proto.js
