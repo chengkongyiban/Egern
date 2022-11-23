@@ -1,4 +1,4 @@
-  scriptings:
+scriptings:
   - http_response:
       name: qtmusic.js
       script_url: >-
