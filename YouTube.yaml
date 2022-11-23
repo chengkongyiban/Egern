@@ -14,5 +14,5 @@ scriptings:
       timeout: 60
 mitm:
   hostnames:
-    - *.googlevideo.com
+    - googlevideo.com
     - youtubei.googleapis.com
