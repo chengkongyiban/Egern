@@ -1,4 +1,4 @@
-  scriptings:
+scriptings:
   - http_request:
       name: chavy.boxjs.js
       script_url: >-
@@ -7,5 +7,4 @@
         https?:\/\/boxjs\.(com|net)
       body_required: true
       timeout: 60
-mitm:
   
