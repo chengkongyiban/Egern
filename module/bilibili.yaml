@@ -1,0 +1,139 @@
+#!name=哔哩哔哩去广告
+#!author=@ddgksf2013 @ClydeTime
+url_rewrites:
+  - match: ^https?:\/\/api\.live\.bilibili\.com\/xlive\/e-commerce-interface\/v\d\/ecommerce-user\/get_shopping_info\?
+    location: http://reject/
+    status_code: 200
+  - match: ^https?:\/\/api\.bilibili\.com\/pgc\/activity\/deliver\/material\/receive
+    location: http://reject/
+    status_code: 200
+  - match: ^https?:\/\/app\.bilibili\.com\/x\/resource\/ip
+    location: http://reject/
+    status_code: 200
+  - match: ^https?:\/\/app\.bilibili\.com\/bilibili\.app\.interface\.v1\.Search\/Default
+    location: http://reject/
+    status_code: 200
+  - match: ^https://app.bilibili.com/x/v2/splash/show
+    location: http://reject/
+    status_code: 200
+  - match: ^https://app.bilibili.com/x/v2/search/defaultwords
+    location: http://reject/
+    status_code: 200
+  - match: ^https?:\/\/api\.bilibili\.com\/x\/vip\/ads\/material\/report
+    location: http://reject/
+    status_code: 200
+  - match: ^https://api.bilibili.com/pgc/season/player/cards
+    location: http://reject/
+    status_code: 200
+  - match: ^https?:\/\/api\.vc\.bilibili\.com\/topic_svr\/v1\/topic_svr
+    location: http://reject/
+    status_code: 200
+  - match: ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/(Flash|ListFlash)
+    location: http://reject/
+    status_code: 200
+  - match: ^https?:\/\/upos-hz-mirrorakam\.akamaized\.net\/(.*)
+    location: https://upos-sz-mirrorcos.bilivideo.com/$1
+    status_code: 302
+scriptings:
+  - http_response:
+      name: bilibili_json.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/bilibili_json.js
+      match: >-
+        ^https?:\/\/app\.bilibili\.com\/x\/resource\/top\/activity
+      body_required: true
+      timeout: 60
+  - http_response:
+      name: bilibili_cc.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/bilibili_cc.js
+      match: >-
+        ^https?:\/\/i.\.hdslb\.com\/bfs\/subtitle\/.+\.json$
+      body_required: true
+      timeout: 60
+  - http_response:
+      name: bilibili_json.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/bilibili_json.js
+      match: >-
+        ^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/cinema\/tab\?
+      body_required: true
+      timeout: 60
+  - http_response:
+      name: bilibili_json.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/bilibili_json.js
+      match: >-
+        ^https:\/\/app\.bilibili\.com\/x\/v2\/splash\/list
+      body_required: true
+      timeout: 60
+  - http_response:
+      name: bilibili_json.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/bilibili_json.js
+      match: >-
+        ^https://app.bilibili.com/x/v2/search/square
+      body_required: true
+      timeout: 60
+  - http_response:
+      name: bilibili_json.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/bilibili_json.js
+      match: >-
+        ^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index
+      body_required: true
+      timeout: 60
+  - http_response:
+      name: bilibili_json.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/bilibili_json.js
+      match: >-
+        ^https?:\/\/api\.(bilibili|biliapi)\.(com|net)\/pgc\/page\/bangumi
+      body_required: true
+      timeout: 60
+  - http_response:
+      name: bilibili_json.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/bilibili_json.js
+      match: >-
+        ^https?:\/\/api\.live\.bilibili\.com\/xlive\/app-room\/v1\/index\/getInfoByRoom
+      body_required: true
+      timeout: 60
+  - http_response:
+      name: bilibili_json.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/bilibili_json.js
+      match: >-
+        ^https?:\/\/app\.bilibili\.com\/x\/resource\/show\/tab
+      body_required: true
+      timeout: 60
+  - http_response:
+      name: bilibili-proto.js
+      script_url: >-
+        https://raw.githubusercontent.com/app2smile/rules/master/js/bilibili-proto.js
+      match: >-
+        ^https:\/\/app\.bilibili\.com\/bilibili\.app\.(view\.v1\.View\/View|dynamic\.v2\.Dynamic\/DynAll)$
+      body_required: true
+      timeout: 60
+  - http_response:
+      name: bili_info.js
+      script_url: >-
+        https://raw.githubusercontent.com/ClydeTime/Quantumult/main/Script/BiliBili/bili_info.js
+      match: >-
+        ^https?:\/\/ap(i|p)\.bilibili\.com\/x\/(vip|v2|resource)\/(space|account|web|price|top_panel_info|show)(\/|\?)(mine|myinfo|access|vip_center|panel|_bridge|skin\?).*
+      body_required: true
+      timeout: 60
+mitm:
+  hostnames:
+    - '*.hdslb.com'
+    - 'app.bilibili.com'
+    - 'api.live.bilibili.com'
+    - 'api.vc.bilibili.com'
+    - 'api.bilibili.com'
+    - 'manga.bilibili.com'
+    - 'grpc.biliapi.net'
+    - 'api.biliapi.net'
+    - '-broadcast.chat.bilibili.com'
+    - '-*cdn*.biliapi.net'
+    - '-*tracker*.biliapi.net'
+    - 'upos-hz-mirrorakam.akamaized.net'
