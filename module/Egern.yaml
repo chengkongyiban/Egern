@@ -1,0 +1,155 @@
+#个人使用的Egern配置
+---
+policy_groups:
+  - external:
+      name: Proxy
+      type: select
+      url: "此处填你的机场订阅"
+      filter: ".*"
+  - select:
+      name: BiliBili
+      policies:
+        - DIRECT
+        - HK
+        - TW
+  - select:
+      name: Spotify
+      policies:
+        - Proxy
+        - IND
+        - USA
+  - select:
+      name: YouTube
+      policies:
+        - Proxy
+        - USA
+  - select:
+      name: Apple
+      policies:
+        - DIRECT
+        - Proxy
+  - select:
+      name: Disney
+      policies:
+        - Proxy
+        - SG
+        - USA
+        - JP
+        - HK
+        - TW
+  - select:
+      name: Netflix
+      policies:
+        - Proxy
+        - SG
+        - USA
+        - JP
+        - HK
+        - TW
+  - external:
+      name: HK
+      type: fallback
+      url: "此处填你的机场订阅"
+      filter: 港|HK|Hong|🇭🇰
+  - external:
+      name: TW
+      type: fallback
+      url: "此处填你的机场订阅"
+      filter: 台|TW|Tai
+  - external:
+      name: JP
+      type: fallback
+      url: "此处填你的机场订阅"
+      filter: (日本|川日|东京|大阪|泉日|埼玉|沪日|深日|JP|Japan)
+  - external:
+      name: SG
+      type: fallback
+      url: "此处填你的机场订阅"
+      filter: (新加坡|坡|狮城|SG|Singapore)
+  - external:
+      name: USA
+      type: fallback
+      url: "此处填你的机场订阅"
+      filter: (美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States|America)
+  - external:
+      name: IND
+      type: fallback
+      url: "此处填你的机场订阅"
+      filter: (印度|India)
+rules:
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/Unbreak.list"
+      policy: DIRECT
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/Advertising.list"
+      policy: REJECT
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/Adblock4limbo.list"
+      policy: REJECT
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/WeChat.list"
+      policy: DIRECT
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/BiliBili.list"
+      policy: BiliBili
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/Apple.list"
+      policy: Apple
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/YouTube.list"
+      policy: YouTube
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/Disney.list"
+      policy: Disney
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/Spotify.list"
+      policy: Spotify
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/TikTok.list"
+      policy: Proxy
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/Google.list"
+      policy: Proxy
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/defaultDirect.list"
+      policy: DIRECT
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/defaultProxy.list"
+      policy: Proxy
+  - rule_set:
+      match: "https://raw.githubusercontent.com/chengkongyiban/Egern/main/rule/Telegram.list"
+      policy: Proxy
+  - ip_cidr:
+      match: 192.168.0.0/16
+      policy: DIRECT
+  - ip_cidr:
+      match: 10.0.0.0/8
+      policy: DIRECT
+  - ip_cidr:
+      match: 127.0.0.0/8
+      policy: DIRECT
+  - ip_cidr:
+      match: 172.16.0.0/12
+      policy: DIRECT
+  - ip_cidr:
+      match: 192.128.0.0/16
+      policy: DIRECT
+  - ip_cidr:
+      match: 224.0.0.0/24
+      policy: DIRECT
+  - geoip:
+      match: CN
+      policy: DIRECT
+  - default:
+      policy: Proxy
+mitm:
+  enable: true
+modules:
+  - url: "https://github.com/chengkongyiban/Egern/raw/main/module/spotify.yaml"
+    enabled: true
+  - url: "https://github.com/chengkongyiban/Egern/raw/main/module/kuwo.yaml"
+    enabled: true
+  - url: "https://github.com/chengkongyiban/Egern/raw/main/module/boxjs.yaml"
+    enabled: true
+  - url: "https://github.com/chengkongyiban/Egern/raw/main/module/YouTubeAds.yaml"
+    enabled: true
