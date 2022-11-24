@@ -1,0 +1,34 @@
+#微博轻享版去开屏广告策略reject
+domain_set:
+  - adstrategy.biz.weibo.com
+  - adsmind.gdtimg.com
+  - adsmind.ugdtimg.com
+  - livep.l.t002.ottcn.com
+  - pgdt.ugdtimg.com
+  - splashqqlive.gtimg.com
+  - wa.gtimg.com
+  - ulogs.umengcloud.com
+  - ulogs.umeng.com
+  - sdk.e.qq.com
+  - mi.gdt.qq.com
+  - open.e.kuaishou.com
+  - api-access.pangolin-sdk-toutiao.com
+  - sdk.open.talk.getui.net
+  - sdk.open.talk.getui.com
+  - errlog.umeng.com
+  - tnc3-aliec2.snssdk.com
+  - sf3-fe-tos.pglstatp-toutiao.com
+  - qzs.gdtimg.com
+  - adimg.uve.weibo.com
+  - adimg.vue.weibo.com
+  - u1.img.mobile.sina.cn
+  - sax.sina.com.cn
+  - saxs.sina.com.cn
+  - saxn.sina.com.cn
+domain_suffix_set:
+  - sdkapp.uve.weibo.com
+  - e.qq.com
+  - gdt.qq.com
+  - l.qq.com
+  - alitui.weibo.com
+  - beacon.sina.com.cn
