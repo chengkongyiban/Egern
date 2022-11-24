@@ -1,0 +1,26 @@
+
+domain_suffix_set:
+  - audio-ak-spotify-com.akamaized.net
+  - byspotify.com
+  - heads4-ak-spotify-com.akamaized.net
+  - pscdn.co
+  - scdn.co
+  - spoti.fi
+  - spotify-com.akamaized.net
+  - spotify-everywhere.com
+  - spotify.com
+  - spotify.design
+  - spotifycdn.com
+  - spotifycdn.net
+  - spotifycharts.com
+  - spotifycodes.com
+  - spotifyforbrands.com
+  - spotifyjobs.com
+  - spotifynewsroom.jp
+  - spotilocal.com
+  - tospotify.com
+domain_keyword_set:
+  - -spotify-com
+  - spotify.com
+ip_cidr_set:
+  - 35.186.224.47/32
