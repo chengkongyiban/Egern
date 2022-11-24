@@ -1,0 +1,106 @@
+#!name=微博Lite去广告
+#!desc=微博Lite去广告
+#!author=ddgksf2013
+
+domain_set:
+  - adstrategy.biz.weibo.com
+  - adsmind.gdtimg.com
+  - adsmind.ugdtimg.com
+  - livep.l.t002.ottcn.com
+  - pgdt.ugdtimg.com
+  - splashqqlive.gtimg.com
+  - wa.gtimg.com
+  - ulogs.umengcloud.com
+  - ulogs.umeng.com
+  - sdk.e.qq.com
+  - mi.gdt.qq.com
+  - open.e.kuaishou.com
+  - api-access.pangolin-sdk-toutiao.com
+  - sdk.open.talk.getui.net
+  - sdk.open.talk.getui.com
+  - errlog.umeng.com
+  - tnc3-aliec2.snssdk.com
+  - sf3-fe-tos.pglstatp-toutiao.com
+  - qzs.gdtimg.com
+  - adimg.uve.weibo.com
+  - adimg.vue.weibo.com
+  - u1.img.mobile.sina.cn
+  - sax.sina.com.cn
+  - saxs.sina.com.cn
+  - saxn.sina.com.cn
+domain_suffix_set:
+  - sdkapp.uve.weibo.com
+  - e.qq.com
+  - gdt.qq.com
+  - l.qq.com
+  - alitui.weibo.com
+  - beacon.sina.com.cn
+url_rewrites:
+  - match: ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php\?a=hot_search_users
+    location: http://reject/
+    status_code: 200
+  - match: ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/ad\/weibointl\?
+    location: http://reject/
+    status_code: 200
+  - match: https?:\/\/sdkapp\.uve\.weibo\.com\/interface\/sdk\/sdkad\.php 
+    location: http://reject/
+    status_code: 200
+  - match:  ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/page\/get_search_suggest
+    location: http://reject/
+    status_code: 200
+  - match: ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*ads
+    location: http://reject/
+    status_code: 200
+scriptings:
+  - http_response:
+      name: weibo_json.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/weibo_json.js
+      match: >-
+        ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses\/unread_hot_timeline
+      body_required: true
+      timeout: 60
+  - http_response:
+      name: weibo_json.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/weibo_json.js
+      match: >-
+        ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses\/friends_timeline
+      body_required: true
+      timeout: 60
+  - http_response:
+      name: weibo_json.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/weibo_json.js
+      match: >-
+        ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/cardlist
+      body_required: true
+      timeout: 60
+  - http_response:
+      name: weibo_json.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/weibo_json.js
+      match: >-
+        ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=trends
+      body_required: true
+      timeout: 60
+  - http_request:
+      name: weibo_json.js
+      script_url: >-
+        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/weibo_json.js
+      match: >-
+        ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic
+      body_required: false
+      timeout: 60
+mitm:
+  hostnames:
+    - '*.uve.weibo.com'
+    - '*api.weibo.cn'
+    - '*api.weibo.com'
+    - 'h5.sinaimg.cn'
+    - 'new.vip.weibo.cn'
+    - '*.sc.weibo.com'
+    - 'captcha.weibo.com'
+    - 'wx*.sinaimg.cn'
+    - 'js.t.sinajs.cn'
+    - '*.e.weibo.com'
