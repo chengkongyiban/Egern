@@ -1,0 +1,27 @@
+#!name=TikTok Unlock
+#!desc=TikTok Unlock
+#!author=
+url_rewrites:
+  - match: (?<=_region=)CN(?=&)
+    location: JP
+    status_code: 307
+  - match: (?<=&mcc_mnc=)4
+    location: 2
+    status_code: 307
+  - match: ^(https?:\/\/(tnc|dm)[\w-]+\.\w+\.com\/.+)(\?)(.+)
+    location:  $1$4
+    status_code: 302
+scriptings:
+  - http_response:
+      name: Tiktok.js
+      script_url: >-
+        https://raw.githubusercontent.com/Tartarus2014/Script/master/Tiktok.js
+      match: >-
+        https?:\/\/.*\.tiktokv\.com\/aweme\/v\d\/(feed|mix\/aweme|aweme\/post|(multi\/)?aweme\/detail|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list|aweme\/favorite)
+      body_required: true
+      timeout: 60
+mitm:
+  hostnames:
+    - '*.tiktokv.com'
+    - '*.byteoversea.com'
+    - '*.tik-tokapi.com'
