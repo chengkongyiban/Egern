@@ -22,7 +22,7 @@ scriptings:
   - http_response:
       name: weibo_json.js
       script_url: >-
-        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/weibo_json.js
+        https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/weibo_json.js
       match: >-
         ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses\/unread_hot_timeline
       body_required: true
@@ -30,7 +30,7 @@ scriptings:
   - http_response:
       name: weibo_json.js
       script_url: >-
-        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/weibo_json.js
+        https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/weibo_json.js
       match: >-
         ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/statuses\/friends_timeline
       body_required: true
@@ -38,7 +38,7 @@ scriptings:
   - http_response:
       name: weibo_json.js
       script_url: >-
-        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/weibo_json.js
+        https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/weibo_json.js
       match: >-
         ^https?:\/\/m?api\.weibo\.c(n|om)\/\d\/cardlist
       body_required: true
@@ -46,7 +46,7 @@ scriptings:
   - http_response:
       name: weibo_json.js
       script_url: >-
-        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/weibo_json.js
+        https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/weibo_json.js
       match: >-
         ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=trends
       body_required: true
@@ -54,7 +54,7 @@ scriptings:
   - http_request:
       name: weibo_json.js
       script_url: >-
-        https://ocd0522.tk/ddgksf2013/Cuttlefish/raw/branch/master/Script/weibo_json.js
+        https://raw.githubusercontent.com/chengkongyiban/shadowrocket/main/scripts/weibo_json.js
       match: >-
         ^https?:\/\/weibointl\.api\.weibo\.c(n|om)\/portal\.php.*feed&a=search_topic
       body_required: false
