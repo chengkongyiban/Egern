@@ -149,7 +149,5 @@ modules:
     enabled: true
   - url: "https://github.com/chengkongyiban/Egern/raw/main/module/kuwo.yaml"
     enabled: true
-  - url: "https://github.com/chengkongyiban/Egern/raw/main/module/boxjs.yaml"
-    enabled: true
   - url: "https://github.com/chengkongyiban/Egern/raw/main/module/YouTubeAds.yaml"
     enabled: true
