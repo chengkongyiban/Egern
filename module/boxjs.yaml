@@ -2,7 +2,7 @@
 url_rewrites:
   - match: "^https?:\\/\\/[\\w-]+\\.googlevideo\\.com\\/initplayback.+&oad"
     location: "http://reject/"
-    status_code: 200
+    status_code: 307
 scriptings:
   - http_request:
       name: "youtube.request "
