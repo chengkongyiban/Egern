@@ -1,0 +1,10 @@
+#!name=BoxJs
+#!desc=http://boxjs.com
+
+[Script]
+
+Rewrite:BoxJs_5 = type=http-request, pattern=^https?:\/\/(.+\.)?boxjs\.(com|net), script-path=https://raw.githubusercontent.com/chengkongyiban/Egern/main/js/boxjs.beta.js, requires-body=true, max-size=3145728, timeout=30
+
+[MITM]
+
+hostname = %APPEND% boxjs.com,boxjs.net,*.boxjs.com,*.boxjs.net
