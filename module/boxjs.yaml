@@ -1,44 +1,20 @@
 ---
+url_rewrites:
+  - match: "^https?:\\/\\/[\\w-]+\\.googlevideo\\.com\\/initplayback.+&oad"
+    location: "http://reject/"
+    status_code: 200
 scriptings:
   - http_request:
-      name: "QX转换 "
-      match: "^https?:\\/\\/.+\\/[^/]+\\.[^/]+(qx$|qx\\?.+=)"
-      script_url: "https://github.com/chengkongyiban/stash/raw/main/js/QX_Rewrite_Parser.js"
-      timeout: 60
+      name: "youtube.request "
+      match: "^https:\\/\\/youtubei\\.googleapis\\.com\\/youtubei\\/v1\\/(browse|next|player|reel\\/reel_watch_sequence)\\?"
+      script_url: "https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.request.beta.js"
       body_required: true
-  - http_request:
-      name: "Loon插件转换 "
-      match: "^https?:\\/\\/.+\\/[^/]+\\.[^/]+(loon$|loon\\?.+=)"
-      script_url: "https://github.com/chengkongyiban/stash/raw/main/js/Loon_Rewrite_Parser.js"
-      timeout: 60
-      body_required: true
-  - http_request:
-      name: "模块控制器 "
-      match: "^https?:\\/\\/.+\\/[^/]+\\.[^/]+(sg$|sg\\?.+=)"
-      script_url: "https://raw.githubusercontent.com/chengkongyiban/stash/main/js/Surge_Rewrite_Parser.js"
-      timeout: 60
-      body_required: true
-  - http_request:
-      name: "规则集转换 "
-      match: "r_parser.list$|r_parser.list\\?.*"
-      script_url: "https://raw.githubusercontent.com/chengkongyiban/stash/main/js/rule_parser.js"
-      timeout: 60
-      body_required: true
-  - http_request:
-      name: "脚本转换 "
-      match: "_script-converter-(stash|surge|loon|shadowrocket)\\.js$"
-      script_url: "https://raw.githubusercontent.com/xream/scripts/main/surge/modules/script-converter/script-converter.js"
-      body_required: true
-  - http_request:
-      name: "脚本转换2 "
-      match: "_script-converter-(STASH|SURGE|LOON|SHADOWROCKET)\\.js$"
-      script_url: "https://raw.githubusercontent.com/xream/scripts/main/surge/modules/script-converter/script-converter.js"
-      timeout: 60
+  - http_response:
+      name: "youtube.response "
+      match: "^https:\\/\\/youtubei\\.googleapis\\.com\\/youtubei\\/v1\\/(browse|next|player|search|reel\\/reel_watch_sequence|guide|account\\/get_setting)\\?"
+      script_url: "https://raw.githubusercontent.com/Maasea/sgmodule/master/Script/Youtube/dist/youtube.response.beta.js"
       body_required: true
 mitm:
   hostnames:
-    - "github.com:443"
-    - "raw.githubusercontent.com:443"
-    - gist.githubusercontent.com
-    - gitlab.com
-    - yfamily.ml
+    - "*.googlevideo.com"
+    - youtubei.googleapis.com
