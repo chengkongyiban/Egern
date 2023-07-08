@@ -1,12 +1,44 @@
-#name=boxjs
-
+---
 scriptings:
   - http_request:
-      name: chavy.boxjs.js
-      script_url: >-
-        https://raw.githubusercontent.com/chavyleung/scripts/master/box/chavy.boxjs.js
-      match: >-
-        https?:\/\/boxjs\.(com|net)
-      body_required: true
+      name: "QX转换 "
+      match: "^https?:\\/\\/.+\\/[^/]+\\.[^/]+(qx$|qx\\?.+=)"
+      script_url: "https://github.com/chengkongyiban/stash/raw/main/js/QX_Rewrite_Parser.js"
       timeout: 60
-  
+      body_required: true
+  - http_request:
+      name: "Loon插件转换 "
+      match: "^https?:\\/\\/.+\\/[^/]+\\.[^/]+(loon$|loon\\?.+=)"
+      script_url: "https://github.com/chengkongyiban/stash/raw/main/js/Loon_Rewrite_Parser.js"
+      timeout: 60
+      body_required: true
+  - http_request:
+      name: "模块控制器 "
+      match: "^https?:\\/\\/.+\\/[^/]+\\.[^/]+(sg$|sg\\?.+=)"
+      script_url: "https://raw.githubusercontent.com/chengkongyiban/stash/main/js/Surge_Rewrite_Parser.js"
+      timeout: 60
+      body_required: true
+  - http_request:
+      name: "规则集转换 "
+      match: "r_parser.list$|r_parser.list\\?.*"
+      script_url: "https://raw.githubusercontent.com/chengkongyiban/stash/main/js/rule_parser.js"
+      timeout: 60
+      body_required: true
+  - http_request:
+      name: "脚本转换 "
+      match: "_script-converter-(stash|surge|loon|shadowrocket)\\.js$"
+      script_url: "https://raw.githubusercontent.com/xream/scripts/main/surge/modules/script-converter/script-converter.js"
+      body_required: true
+  - http_request:
+      name: "脚本转换2 "
+      match: "_script-converter-(STASH|SURGE|LOON|SHADOWROCKET)\\.js$"
+      script_url: "https://raw.githubusercontent.com/xream/scripts/main/surge/modules/script-converter/script-converter.js"
+      timeout: 60
+      body_required: true
+mitm:
+  hostnames:
+    - "github.com:443"
+    - "raw.githubusercontent.com:443"
+    - gist.githubusercontent.com
+    - gitlab.com
+    - yfamily.ml
